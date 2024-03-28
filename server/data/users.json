@@ -6,5 +6,29 @@
   {
     "email": "testmail@test.com",
     "password": "$2b$10$HJDSwM9cLHLKd6pCRepIvuCVTr2W0vKRV0411w3qVmZbi3B3tm/.e"
+  },
+  {
+    "email": "hejsan ",
+    "password": "$2b$10$uIqH4.fHynls08jUebY4hOpeRzJx1FhepzkazsdKNYxb38ZgppGIS"
+  },
+  {
+    "email": "hejsan",
+    "password": "$2b$10$vl6kWsa5OTIEsvBNZqDsE.PKrV6tL/yneBXVMk6nO5TqefUCkWdmS"
+  },
+  {
+    "email": "hej",
+    "password": "$2b$10$3Fo7Wi.lxddhq0sAYEnbXu6YFilCr7KkQhndXoNLFuUITENeNxTGi"
+  },
+  {
+    "email": "funkar det",
+    "password": "$2b$10$3kzpegHtPk6rvPcA8rePwudeoGbLpjqZ2zIegjU0b98hQmZ1sMlOK"
+  },
+  {
+    "email": "sdasa",
+    "password": "$2b$10$6Z.lxTjwONHlaSTr/kBnKeoK1WblfgHKbhh3bLrJyCVju.fWfb8hS"
+  },
+  {
+    "email": "hejsan2",
+    "password": "$2b$10$5EF7t/pLnhgH9cuQB0LDAOU47PauHwbBFIOpDbp.mG9XnDxSTfeuG"
   }
 ]
