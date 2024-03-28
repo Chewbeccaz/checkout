@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import { Register } from "./components/Register";
 
 function App() {
   const [user, setUser] = useState<string>("");
@@ -76,6 +77,7 @@ function App() {
         <button onClick={login}>Logga in</button>
         <button onClick={logout}>Logga ut</button>
       </div>
+      <div>{!user && <Register />}</div>
     </>
   );
 }
