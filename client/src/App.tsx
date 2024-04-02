@@ -69,11 +69,23 @@ function App() {
     }
   };
 
+  const handlePayment = async () => {
+    const response = await fetch(
+      "http://localhost:3001/payments/create-checkout-session",
+      {
+        method: "POST",
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  };
+
   return (
     <>
       <div>
         <h1>{user ? "INLOGGAD: " + user : "UTLOGGAD"}</h1>
         <button onClick={register}>Registrera</button>
+        <button onClick={handlePayment}>Ge mig pengar</button>
         <button onClick={login}>Logga in</button>
         <button onClick={logout}>Logga ut</button>
       </div>
