@@ -14,7 +14,7 @@ const createCheckoutSession = async (req, res) => {
         quantity: 2,
       },
     ],
-    success_url: "http://localhost:5173/", //efter router implementeras lägg till en sida för confirmation.
+    success_url: "http://localhost:5173/confirmation", //efter router implementeras lägg till en sida för confirmation.
     cancel_url: "http://localhost:5173/",
   });
   res.status(200).json({ url: session.url });
