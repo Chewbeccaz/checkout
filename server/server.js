@@ -5,8 +5,8 @@ require("dotenv").config();
 
 const userRouter = require("./resources/users/users.router");
 const authRouter = require("./resources/auth/auth.router");
-
 const stripeRouter = require("./stripe/stripe.router");
+// const productRouter = require("./resources/products/products.router");
 
 const app = express();
 //Vi behöver tala om för cors vad som tillåts.
@@ -18,8 +18,8 @@ app.use(
 );
 
 app.use(express.json());
-
 app.use("/payments", stripeRouter);
+// app.use("/products", productRouter);
 
 // console.log(process.env);
 
