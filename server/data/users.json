@@ -34,5 +34,9 @@
   {
     "email": "123@gmail.com",
     "password": "$2b$10$QCIh.RoPB2niFrc.z3i.gedzXkc7dh1.OFEl.AxraocUOzFTaC.vO"
+  },
+  {
+    "email": "Rebecca",
+    "password": "$2b$10$UORgX/DSDlSYtxvUeW.KWu/DFBs52dCWTFNbMzlUQVOLynkxvGem2"
   }
 ]

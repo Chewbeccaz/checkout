@@ -14,6 +14,9 @@ const register = async (req, res) => {
     return res.status(400).json("User already exists");
   }
 
+  //skapa kund i stripe.
+  //när man får tillbaa en kund från stripe spara id - den används för att koppla och beteala. etc.
+
   //Kryptera lösenord
   const hashedPassword = await bcrypt.hash(password, 10);
 

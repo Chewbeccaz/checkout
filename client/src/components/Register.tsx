@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 
 export const Register = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registrationMsg, setRegistrationMsg] = useState("");
 
@@ -14,7 +14,7 @@ export const Register = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: username,
+          email: email,
           password: password,
         }),
       });
@@ -34,8 +34,8 @@ export const Register = () => {
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.name === "username") {
-      setUsername(e.target.value);
+    if (e.target.name === "email") {
+      setEmail(e.target.value);
     } else if (e.target.name === "password") {
       setPassword(e.target.value);
     }
@@ -47,9 +47,9 @@ export const Register = () => {
       <form className="register-wrapper">
         <input
           type="text"
-          name="username"
+          name="email"
           onChange={handleInputChange}
-          value={username}
+          value={email}
           placeholder="Skriv in mail eller användarnamn.."
         />
 
