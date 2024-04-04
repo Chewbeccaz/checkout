@@ -30,5 +30,9 @@
   {
     "email": "hejsan2",
     "password": "$2b$10$5EF7t/pLnhgH9cuQB0LDAOU47PauHwbBFIOpDbp.mG9XnDxSTfeuG"
+  },
+  {
+    "email": "123@gmail.com",
+    "password": "$2b$10$QCIh.RoPB2niFrc.z3i.gedzXkc7dh1.OFEl.AxraocUOzFTaC.vO"
   }
 ]

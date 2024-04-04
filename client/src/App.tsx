@@ -85,21 +85,21 @@
 // export default App;
 
 // import { Route, Router, Routes } from "react-router-dom";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Payment } from "../src/components/Payment";
-import { Confirmation } from "../src/components/Confirmation";
-import { WebshopApp } from "./components/WebshopApp";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import { Payment } from "../src/components/Payment";
+// import { Confirmation } from "../src/components/Confirmation";
+// import { WebshopApp } from "./components/WebshopApp";
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<WebshopApp />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/confirmation" element={<Confirmation />} />
-      </Routes>
-    </Router>
-  );
-}
+// function App() {
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path="/" element={<WebshopApp />} />
+//         <Route path="/payment" element={<Payment />} />
+//         <Route path="/confirmation" element={<Confirmation />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
 
-export default App;
+// export default App;
