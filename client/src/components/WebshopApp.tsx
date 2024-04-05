@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Register } from "./Register";
 import { Login } from "./Login";
 import { Logout } from "./Logout";
+import { Products } from "./Products";
+import "../styles/webshopapp.css";
 
 export const WebshopApp = () => {
   const [user, setUser] = useState<string>("");
@@ -45,6 +47,10 @@ export const WebshopApp = () => {
         <button onClick={register}>Registrera</button>
       </div>
       <div>{!user && <Register />}</div>
+      <div className="product-box">
+        {" "}
+        <Products />{" "}
+      </div>
     </>
   );
 };
