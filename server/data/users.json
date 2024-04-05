@@ -1,42 +1,7 @@
 [
   {
-    "email": "fakeemail2£@gmail.fusk",
-    "password": "$2b$10$VufhLFtoG7Kv5xPtXzPDqOwZj6yhloy5UTH89vqP.B4nDlk3tNgbW"
-  },
-  {
-    "email": "testmail@test.com",
-    "password": "$2b$10$HJDSwM9cLHLKd6pCRepIvuCVTr2W0vKRV0411w3qVmZbi3B3tm/.e"
-  },
-  {
-    "email": "hejsan ",
-    "password": "$2b$10$uIqH4.fHynls08jUebY4hOpeRzJx1FhepzkazsdKNYxb38ZgppGIS"
-  },
-  {
-    "email": "hejsan",
-    "password": "$2b$10$vl6kWsa5OTIEsvBNZqDsE.PKrV6tL/yneBXVMk6nO5TqefUCkWdmS"
-  },
-  {
-    "email": "hej",
-    "password": "$2b$10$3Fo7Wi.lxddhq0sAYEnbXu6YFilCr7KkQhndXoNLFuUITENeNxTGi"
-  },
-  {
-    "email": "funkar det",
-    "password": "$2b$10$3kzpegHtPk6rvPcA8rePwudeoGbLpjqZ2zIegjU0b98hQmZ1sMlOK"
-  },
-  {
-    "email": "sdasa",
-    "password": "$2b$10$6Z.lxTjwONHlaSTr/kBnKeoK1WblfgHKbhh3bLrJyCVju.fWfb8hS"
-  },
-  {
-    "email": "hejsan2",
-    "password": "$2b$10$5EF7t/pLnhgH9cuQB0LDAOU47PauHwbBFIOpDbp.mG9XnDxSTfeuG"
-  },
-  {
-    "email": "123@gmail.com",
-    "password": "$2b$10$QCIh.RoPB2niFrc.z3i.gedzXkc7dh1.OFEl.AxraocUOzFTaC.vO"
-  },
-  {
-    "email": "Rebecca",
-    "password": "$2b$10$UORgX/DSDlSYtxvUeW.KWu/DFBs52dCWTFNbMzlUQVOLynkxvGem2"
+    "email": "rebecca@gmail.com",
+    "password": "$2b$10$jUIscNRFE9wX.Hmg.p6N1uw0n5tIp5CGVLJ8p0fOJer0Ofhy9PExK",
+    "stripeId": "cus_PruqNBRaUCCWqk"
   }
 ]

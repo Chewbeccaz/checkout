@@ -1,3 +1,4 @@
+const initStripe = require("../../stripe");
 const fetchUsers = require("../../utils/fetchUsers");
 const fs = require("fs").promises;
 const bcrypt = require("bcrypt");
@@ -17,6 +18,14 @@ const register = async (req, res) => {
   //skapa kund i stripe.
   //när man får tillbaa en kund från stripe spara id - den används för att koppla och beteala. etc.
 
+  const stripe = initStripe();
+  //lite validering på detta, kolla om kund finns
+
+  //
+  const customer = await stripe.customers.create({
+    email,
+  });
+
   //Kryptera lösenord
   const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -24,6 +33,7 @@ const register = async (req, res) => {
   const newUser = {
     email,
     password: hashedPassword,
+    stripeId: customer.id,
   };
   users.push(newUser);
   await fs.writeFile("./data/users.json", JSON.stringify(users, null, 2));
@@ -46,10 +56,11 @@ const login = async (req, res) => {
   }
 
   //Logga in anvädaren, starta en session
+  //hämta ut id:t från stripe via detta när betalning ska ske.
   req.session.user = userExists;
 
   //Skicka tillbaka ett svar
-  res.status(200).json("Logged in " + userExists.email);
+  res.status(200).json(userExists);
 };
 
 const logout = (req, res) => {
