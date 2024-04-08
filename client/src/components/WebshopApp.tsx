@@ -4,6 +4,8 @@ import { Login } from "./Login";
 import { Logout } from "./Logout";
 import { Products } from "./Products";
 import "../styles/webshopapp.css";
+import CartProvider from "../context/CartContext";
+import { Header } from "./Header";
 
 export const WebshopApp = () => {
   const [user, setUser] = useState<string>("");
@@ -40,18 +42,22 @@ export const WebshopApp = () => {
   };
 
   return (
-    <>
-      <div>
-        <h1>{user ? "INLOGGAD: " + user : "UTLOGGAD"}</h1>
-        {!user ? <Login /> : <Logout />}
-        <button onClick={register}>Registrera</button>
-      </div>
-      <div>{!user && <Register />}</div>
-      <div className="product-box">
-        {" "}
-        <Products />{" "}
-      </div>
-    </>
+    <CartProvider>
+      <>
+        <Header />
+        {/* kanske lägga nedan inuti headern istället.  */}
+        <div>
+          <h1>{user ? "INLOGGAD: " + user : "UTLOGGAD"}</h1>
+          {!user ? <Login /> : <Logout />}
+          <button onClick={register}>Registrera</button>
+        </div>
+        <div>{!user && <Register />}</div>
+        <div className="product-box">
+          {" "}
+          <Products />{" "}
+        </div>
+      </>
+    </CartProvider>
   );
 };
 
