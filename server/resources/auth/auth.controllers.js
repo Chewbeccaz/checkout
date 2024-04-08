@@ -49,6 +49,8 @@ const login = async (req, res) => {
   const users = await fetchUsers();
   const userExists = users.find((u) => u.email === email);
 
+  console.log("User exists:", userExists);
+
   //Kolla så lösenordet stämmer
 
   if (!userExists || !(await bcrypt.compare(password, userExists.password))) {
@@ -58,6 +60,7 @@ const login = async (req, res) => {
   //Logga in anvädaren, starta en session
   //hämta ut id:t från stripe via detta när betalning ska ske.
   req.session.user = userExists;
+  console.log("Session:", req.session.user);
 
   //Skicka tillbaka ett svar
   res.status(200).json(userExists);
