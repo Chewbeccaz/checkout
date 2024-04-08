@@ -17,6 +17,7 @@ export const Payment = () => {
             quantity: 1,
           },
         ]),
+        credentials: "include",
       }
     );
     const data = await response.json();

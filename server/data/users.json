@@ -3,5 +3,10 @@
     "email": "rebecca@gmail.com",
     "password": "$2b$10$jUIscNRFE9wX.Hmg.p6N1uw0n5tIp5CGVLJ8p0fOJer0Ofhy9PExK",
     "stripeId": "cus_PruqNBRaUCCWqk"
+  },
+  {
+    "email": "test@test.com",
+    "password": "$2b$10$Ad/YkKq1pOk5H04AOIVhr.IdKBLk927cQ3bhZ0ZWR6ZIVNsq/U8k.",
+    "stripeId": "cus_Pt3LdBWvFIeD7j"
   }
 ]

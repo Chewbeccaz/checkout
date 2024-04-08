@@ -6,12 +6,26 @@ const createCheckoutSession = async (req, res) => {
   //Den matchar hur vår kundkorg ser ut. Datan jag skickar iväg till backend..
   //Quantity behöver uppdateras till 2, och inte bli två exempel av samma produkt i korgen.
 
+  // const user = req.session.user;
+
+  // console.log("User object:", user);
+
+  // if (!user) {
+  //   return res.status(400).json({ error: "User data not found in session" });
+  // }
+
+  const user = req.session.user;
+
+  if (!user) {
+    return res.status(400).json({ error: "User data not found in session" });
+  }
+
   const cart = req.body;
 
   const stripe = initStripe();
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
-    customer: "cus_PruqNBRaUCCWqk", //hårdkodat från början in med req.session.user.stripeId, här ska vi lägga in det vi får av req.session
+    customer: user.stripeId,
     line_items: cart.map((item) => {
       return {
         price: item.product,

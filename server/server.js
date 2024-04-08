@@ -16,16 +16,12 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(express.json());
-app.use("/payments", stripeRouter);
-app.use("/products", productRouter); //<-- varför funkar det när vi kommenterat ut denna?
-
-// console.log(process.env);
 
 //Inställningarna för cookies
 app.use(
   cookieSession({
+    name: "session",
     // keys: ["jdsijdi", "jadjs"] Man kan ha antingen key eller secret
     secret: "s3cr3tk3y",
     maxAge: 1000 * 60 * 60, // 1 h - man kan också använda expires.
@@ -35,9 +31,13 @@ app.use(
   })
 );
 
+// console.log(process.env);
+
 //Routes
 //Denna tar oss till router som tar oss vidare till controllers där getUser-funktionen finns.
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/payments", stripeRouter);
+app.use("/products", productRouter);
 
 app.listen(3001, () => console.log("server is up and running.. "));
