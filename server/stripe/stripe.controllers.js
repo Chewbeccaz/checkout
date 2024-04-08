@@ -41,8 +41,11 @@ const verifySession = async (req, res) => {
     const order = {
       orderNumber: Math.floor(Math.random() * 10000000), //Här skulle vi kunna installera guid
       customerName: session.customer_details.name,
-      products: "",
-      total: session.amout_total,
+      products: lineItems.data.map((item) => ({
+        description: item.description,
+        quantity: item.quantity,
+      })),
+      total: (session.amount_total / 100).toFixed(2), //Ta bort ören
       date: new Date(),
     };
 
