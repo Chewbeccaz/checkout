@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
+import { IProduct, useCart } from "../context/CartContext";
 
-interface IProducts {
-  id: string;
-  name: string;
-  description: string;
-  images: string[];
-  price: number;
-  default_price: {
-    unit_amount: number;
-  };
-}
+// interface IProducts {
+//   id: string;
+//   name: string;
+//   description: string;
+//   images: string[];
+//   price: number;
+//   default_price: {
+//     unit_amount: number;
+//   };
+// }
 
 export const Products = () => {
-  const [products, setProducts] = useState<IProducts[]>([]);
+  const [products, setProducts] = useState<IProduct[]>();
+
+  const { addToCart } = useCart(); //hooken  från context
 
   useEffect(() => {
     fetchProducts();
@@ -24,8 +27,8 @@ export const Products = () => {
       const fetchedData = await response.json();
       console.log(fetchedData); // vilket data får vi tillbaka?
 
-      const productList: IProducts[] = fetchedData.data.map(
-        (product: IProducts) => ({
+      const productList: IProduct[] = fetchedData.data.map(
+        (product: IProduct) => ({
           ...product,
           price: product.default_price.unit_amount / 100, // Stripe använder cent som standardenhet, så vi delar med 100 för att få priset i SEK
         })
@@ -41,7 +44,7 @@ export const Products = () => {
     <>
       <h3>Utforska våra produkter</h3>
       <div>
-        {products.map((product) => (
+        {products?.map((product: IProduct) => (
           <div key={product.id}>
             <h4>{product.name}</h4>
             <p>{product.price} kr</p>
@@ -55,6 +58,9 @@ export const Products = () => {
                   style={{ width: "200px" }}
                 />
               ))}
+            <button onClick={() => addToCart(product)}>
+              Lägg till i kundvagn
+            </button>
           </div>
         ))}
       </div>
