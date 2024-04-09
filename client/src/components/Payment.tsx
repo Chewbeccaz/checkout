@@ -1,5 +1,34 @@
+import { useCart } from "../context/CartContext";
+
 export const Payment = () => {
+  const { cart } = useCart();
+  console.log(cart);
+
+  //   const handlePayment = async () => {
+  //     const products = cart.map((item) => ({
+  //       product: item.product.id,
+  //       quantity: item.quantity,
+  //     }));
+
+  //     const response = await fetch(
+  //       "http://localhost:3001/payments/create-checkout-session",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(products),
+  //         credentials: "include",
+  //       }
+  //     );
+  //     const data = await response.json();
+
+  //     localStorage.setItem("sessionId", JSON.stringify(data.sessionId));
+  //     window.location = data.url;
+  //   };
+
   const handlePayment = async () => {
+    console.log("cart 2:", cart);
     const response = await fetch(
       "http://localhost:3001/payments/create-checkout-session",
       {
@@ -7,16 +36,7 @@ export const Payment = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify([
-          {
-            product: "price_1P14mpRuDPufONRtFKOWeKCj",
-            quantity: 3,
-          },
-          {
-            product: "price_1P14qDRuDPufONRtz3HXjphz",
-            quantity: 1,
-          },
-        ]),
+        body: JSON.stringify(cart),
         credentials: "include",
       }
     );
@@ -27,7 +47,7 @@ export const Payment = () => {
 
   return (
     <div>
-      <button onClick={handlePayment}>GE MIG PENGAR</button>
+      <button onClick={handlePayment}>Gå till betalning</button>
     </div>
   );
 };
