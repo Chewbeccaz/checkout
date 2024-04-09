@@ -8,5 +8,15 @@
     "email": "test@test.com",
     "password": "$2b$10$Ad/YkKq1pOk5H04AOIVhr.IdKBLk927cQ3bhZ0ZWR6ZIVNsq/U8k.",
     "stripeId": "cus_Pt3LdBWvFIeD7j"
+  },
+  {
+    "email": "fakeemail2£@gmail.fusk",
+    "password": "$2b$10$ZKc83XumSPBNCjvl2DkBwuQS0gUg56Z4nACTW6zr/LFqIdEoT4oKG",
+    "stripeId": "cus_PtL2DwNl68nqV2"
+  },
+  {
+    "email": "",
+    "password": "$2b$10$JOvZ1k0MFbGlH9sASu0X6eCLkPIidsuTvSILBHiwYn9KsgYqSqVOW",
+    "stripeId": "cus_PtL4N6kVNurBU0"
   }
 ]

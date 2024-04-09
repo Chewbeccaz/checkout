@@ -26,32 +26,27 @@ export const WebshopApp = () => {
     authorize();
   }, []);
 
-  const register = async () => {
-    const response = await fetch("http://localhost:3001/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: "fakeemail2£@gmail.fusk",
-        password: "12345567",
-      }),
-    });
-    const data = await response.json();
-    console.log(data);
-  };
+  // const register = async () => {
+  //   const response = await fetch("http://localhost:3001/api/auth/register", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       email: "fakeemail2£@gmail.fusk",
+  //       password: "12345567",
+  //     }),
+  //   });
+  //   const data = await response.json();
+  //   console.log(data);
+  // };
 
   return (
     <CartProvider>
       <>
-        <Header />
+        <Header user={user} />
         {/* kanske lägga nedan inuti headern istället.  */}
-        <div>
-          <h1>{user ? "INLOGGAD: " + user : "UTLOGGAD"}</h1>
-          {!user ? <Login /> : <Logout />}
-          <button onClick={register}>Registrera</button>
-        </div>
-        <div>{!user && <Register />}</div>
+
         <div className="product-box">
           {" "}
           <Products />{" "}
