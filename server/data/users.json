@@ -28,5 +28,10 @@
     "email": "hallå@hallå.com",
     "password": "$2b$10$Hf4jPDqu.Gq0d6obreSm1.pGn0OAwIS5V7DlNhK3kUJHtCNilb/Bm",
     "stripeId": "cus_PtYDT3fRKxjP8U"
+  },
+  {
+    "email": "hansson@hansson.com",
+    "password": "$2b$10$YRt1FJHRIQYq/ICuyYFdZemtscq/EnTeblNqx4wWgEMXt23yLfV8m",
+    "stripeId": "cus_PtkqYOnovlUoIl"
   }
 ]
