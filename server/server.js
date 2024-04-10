@@ -21,7 +21,7 @@ app.use(express.json());
 //Inställningarna för cookies
 app.use(
   cookieSession({
-    name: "session",
+    // name: "session",
     // keys: ["jdsijdi", "jadjs"] Man kan ha antingen key eller secret
     secret: "s3cr3tk3y",
     maxAge: 1000 * 60 * 60, // 1 h - man kan också använda expires.

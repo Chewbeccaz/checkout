@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useUser } from "../context/UserContext";
 
 export const Login = () => {
-  const [user, setUser] = useState<string>("");
+  // const [user, setUser] = useState<string>("");
+  const { setLoggedInUser } = useUser();
+  // const { setUser } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,9 +23,9 @@ export const Login = () => {
     const data = await response.json();
 
     if (response.status === 200) {
-      setUser(data);
+      setLoggedInUser(data);
     } else {
-      setUser("");
+      setLoggedInUser(undefined);
     }
 
     console.log(data);

@@ -1,21 +1,17 @@
-//Jag tänker en knapp med kundvagn, som togglar innehållet i kundvagnen?
-//Precis som i förra projektet med login på ikonen.
-
 import { useCart } from "../context/CartContext";
 import { FiShoppingCart } from "react-icons/fi";
 import "../styles/header.css";
-import { Login } from "./Login";
-import { Logout } from "./Logout";
 import { Register } from "./Register";
 import { useState } from "react";
 import { Cart } from "./Cart";
+import Navigation from "./Navigation";
+import { useUser } from "../context/UserContext";
+import { Login } from "./Login";
+import { Logout } from "./Logout";
 
-interface IHeaderProps {
-  user: string;
-}
-
-export const Header = ({ user }: IHeaderProps) => {
+export const Header = () => {
   const { cart } = useCart();
+  const { user } = useUser();
   const [openCart, setOpenCart] = useState<boolean>(false);
 
   const handleOpenCart = () => {
@@ -24,10 +20,11 @@ export const Header = ({ user }: IHeaderProps) => {
 
   return (
     <>
+      <Navigation />
       <div>
-        <h1>{user ? "INLOGGAD: " + user : "UTLOGGAD"}</h1>
-        {!user ? <Login /> : <Logout />}
-        {/* <button onClick={register}>Registrera</button> */}
+        <h1>{user ? "INLOGGAD: " + user.email : "UTLOGGAD"}</h1>
+        <Login />
+        <Logout />
       </div>
       <div>{!user && <Register />}</div>
 
@@ -35,29 +32,15 @@ export const Header = ({ user }: IHeaderProps) => {
         <h1>
           Some<span>Webshop</span>
         </h1>
-        <div className="cart" onClick={handleOpenCart}>
-          <FiShoppingCart />
-          <div className="cart-count">{cart.length}</div>
-        </div>
+        {user && (
+          <div className="cart" onClick={handleOpenCart}>
+            <FiShoppingCart />
+            <div className="cart-count">{cart.length}</div>
+          </div>
+        )}
       </div>
 
-      <Cart openCart={openCart} handleOpenCart={handleOpenCart} />
-
-      {/* <Modal
-        open={openCart}
-        onClose={handleOpenCart}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description">
-        <div style={{ backgroundColor: "white", padding: 20 }}>
-          {cart.map((item, index) => (
-            <div key={index}>
-              <h4>{item.product.name}</h4>
-              <p>Price: {item.product.price}</p>
-              <p>Quantity: {item.quantity}</p>
-            </div>
-          ))}
-        </div>
-      </Modal> */}
+      {user && <Cart openCart={openCart} handleOpenCart={handleOpenCart} />}
     </>
   );
 };
