@@ -1,43 +1,56 @@
 import { ChangeEvent, useState } from "react";
+import { useUser } from "../context/UserContext";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registrationMsg, setRegistrationMsg] = useState("");
+  const { register } = useUser();
 
-  const registerNewUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:3001/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      });
+  // const registerNewUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await fetch("http://localhost:3001/api/auth/register", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         email: email,
+  //         password: password,
+  //       }),
+  //     });
 
-      const data = await response.json();
-      console.log(data);
+  //     const data = await response.json();
+  //     console.log(data);
 
-      if (response.ok) {
-        setRegistrationMsg("Din användare är skapad");
-        //Kanske redirecta till login
-      } else {
-        setRegistrationMsg("Användare redan registrerad");
-      }
-    } catch (error) {
-      console.error("An error occured", error);
-    }
-  };
+  //     if (response.ok) {
+  //       setRegistrationMsg("Din användare är skapad");
+  //       //Kanske redirecta till login
+  //     } else {
+  //       setRegistrationMsg("Användare redan registrerad");
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occured", error);
+  //   }
+  // };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === "email") {
       setEmail(e.target.value);
     } else if (e.target.name === "password") {
       setPassword(e.target.value);
+    }
+  };
+
+  const registerNewUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      await register(email, password);
+      setRegistrationMsg("Din användare är skapad");
+    } catch (error) {
+      console.error("An error occurred", error);
+      setRegistrationMsg("Användare redan registrerad");
     }
   };
 

@@ -6,7 +6,7 @@ import { Login } from "./Login";
 import { Register } from "./Register";
 
 const Navigation = () => {
-  const { isLoggedIn, setLoggedInUser, logout } = useUser();
+  const { user, logout } = useUser();
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [showRegisterModal, setShowRegisterModal] = useState<boolean>(false);
 
@@ -23,15 +23,16 @@ const Navigation = () => {
     setShowRegisterModal(!showRegisterModal);
   };
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
+    console.log("Funkade det att logga ut?");
   };
 
   const handleToggleLogin = () => {
-    if (!isLoggedIn) {
-      handleToggleLoginModal();
-    } else {
+    if (user) {
       handleLogout();
+    } else {
+      handleToggleLoginModal();
     }
   };
 
@@ -47,10 +48,10 @@ const Navigation = () => {
         </li>
         <li>
           <button onClick={handleToggleLogin}>
-            {isLoggedIn ? "Logga ut" : "Logga in"}
+            {user ? "Logga ut" : "Logga in"}
           </button>
         </li>
-        {!isLoggedIn && (
+        {!user && (
           <li>
             <button onClick={handleToggleRegisterModal}>Registrera</button>
           </li>

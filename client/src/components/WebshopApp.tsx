@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 // import { Register } from "./Register";
 // import { Login } from "./Login";
 // import { Logout } from "./Logout";
@@ -6,7 +6,7 @@ import { Products } from "./Products";
 import "../styles/webshopapp.css";
 import CartProvider from "../context/CartContext";
 import { Header } from "./Header";
-import UserProvider, { UserContext, useUser } from "../context/UserContext";
+import { UserProvider } from "../context/UserContext";
 
 export const WebshopApp = () => {
   // const [user, setUser] = useState<string>("");
@@ -26,29 +26,29 @@ export const WebshopApp = () => {
   //   };
   //   authorize();
   // }, []);
-  const { setLoggedInUser } = useUser();
-  useEffect(() => {
-    const authorize = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:3001/api/auth/authorize",
-          {
-            credentials: "include",
-          }
-        );
-        if (response.status === 200) {
-          const data = await response.json();
-          setLoggedInUser(data);
-        } else {
-          setLoggedInUser(undefined);
-        }
-      } catch (error) {
-        console.error("Authorization error:", error);
-      }
-    };
+  // const { setLoggedInUser } = useUser();
+  // useEffect(() => {
+  //   const authorize = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "http://localhost:3001/api/auth/authorize",
+  //         {
+  //           credentials: "include",
+  //         }
+  //       );
+  //       if (response.status === 200) {
+  //         const data = await response.json();
+  //         setLoggedInUser(data);
+  //       } else {
+  //         setLoggedInUser(undefined);
+  //       }
+  //     } catch (error) {
+  //       console.error("Authorization error:", error);
+  //     }
+  //   };
 
-    authorize();
-  }, []);
+  //   authorize();
+  // }, []);
 
   return (
     <UserProvider>
