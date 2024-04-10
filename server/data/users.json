@@ -18,5 +18,15 @@
     "email": "",
     "password": "$2b$10$JOvZ1k0MFbGlH9sASu0X6eCLkPIidsuTvSILBHiwYn9KsgYqSqVOW",
     "stripeId": "cus_PtL4N6kVNurBU0"
+  },
+  {
+    "email": "nytest@nytest.com",
+    "password": "$2b$10$wYg0DmLALABZO3J8pB.AsuzUfRLecXasPUKczDDbvrr2Xxegabpn6",
+    "stripeId": "cus_PtYCrTImbHCPlh"
+  },
+  {
+    "email": "hallå@hallå.com",
+    "password": "$2b$10$Hf4jPDqu.Gq0d6obreSm1.pGn0OAwIS5V7DlNhK3kUJHtCNilb/Bm",
+    "stripeId": "cus_PtYDT3fRKxjP8U"
   }
 ]

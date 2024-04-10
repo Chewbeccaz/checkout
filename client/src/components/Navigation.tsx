@@ -1,33 +1,107 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useUser } from "../context/UserContext";
+import { Box, Modal, Typography } from "@mui/material";
+import { Login } from "./Login";
+import { Register } from "./Register";
 
 const Navigation = () => {
-  const [user, setUser] = useState<boolean>(false);
+  const { isLoggedIn, setLoggedInUser, logout } = useUser();
+  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
+  const [showRegisterModal, setShowRegisterModal] = useState<boolean>(false);
 
-  const toggleUser = () => {
-    setUser(!user);
+  // const setLoggedInUser = (user: ILoggedInUser) => {
+  //   setUser(user);
+  //   setIsLoggedIn(true);
+  // };
+
+  const handleToggleLoginModal = () => {
+    setShowLoginModal(!showLoginModal);
   };
 
+  const handleToggleRegisterModal = () => {
+    setShowRegisterModal(!showRegisterModal);
+  };
+
+  const handleLogout = () => {
+    logout();
+  };
+
+  const handleToggleLogin = () => {
+    if (!isLoggedIn) {
+      handleToggleLoginModal();
+    } else {
+      handleLogout();
+    }
+  };
+
+  //  const [user, setUser] = useState<boolean>(false)
+  //  const toggleUser = () => {
+  //    setUser(!user);
+  //  }
   return (
     <nav>
       <ul>
         <li>
           <NavLink to="/">Hem</NavLink>
         </li>
-        {/* <li>
-          <Link to="/produkter">Produkter</Link>
-        </li> */}
         <li>
-          <NavLink to="/payment">Kundvagn</NavLink>
+          <button onClick={handleToggleLogin}>
+            {isLoggedIn ? "Logga ut" : "Logga in"}
+          </button>
         </li>
-        <li>
-          {user ? (
-            <button onClick={toggleUser}>Logga ut</button>
-          ) : (
-            <NavLink to="/login">Logga ut</NavLink>
-          )}
-        </li>
+        {!isLoggedIn && (
+          <li>
+            <button onClick={handleToggleRegisterModal}>Registrera</button>
+          </li>
+        )}
       </ul>
+
+      {/* <Modal open={showLoginModal} onClose={handleToggleLoginModal}>
+        <Login />
+      </Modal>
+
+      <Modal open={showRegisterModal} onClose={handleToggleRegisterModal}>
+        <Register />
+      </Modal> */}
+
+      <Modal open={showLoginModal} onClose={handleToggleLoginModal}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400,
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+          }}>
+          <Typography variant="h5" gutterBottom>
+            Logga in
+          </Typography>
+          <Login />
+        </Box>
+      </Modal>
+
+      <Modal open={showRegisterModal} onClose={handleToggleRegisterModal}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400,
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+          }}>
+          <Typography variant="h5" gutterBottom>
+            Registrera
+          </Typography>
+          <Register />
+        </Box>
+      </Modal>
     </nav>
   );
 };
