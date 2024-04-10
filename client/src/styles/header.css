@@ -1,6 +1,22 @@
+/* body {
+ 
+}
+*/
 .header {
   display: flex;
   align-items: center;
+  color: ivory;
+  height: 100vh;
+  width: 100%;
+  background-image: url("../images/bg2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.logga {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .cart {
@@ -26,4 +42,5 @@
 .cart svg {
   font-size: 36px;
   margin-right: 8px;
+  cursor: pointer;
 }

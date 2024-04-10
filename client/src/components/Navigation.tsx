@@ -1,19 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { Box, Modal, Typography } from "@mui/material";
 import { Login } from "./Login";
 import { Register } from "./Register";
+import "../styles/navigation.css";
+import { IoHomeOutline } from "react-icons/io5";
+import { useCart } from "../context/CartContext";
+import { FiShoppingCart } from "react-icons/fi";
+import { Cart } from "./Cart";
 
 const Navigation = () => {
   const { user, logout } = useUser();
+  const { cart } = useCart();
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [showRegisterModal, setShowRegisterModal] = useState<boolean>(false);
+  const [openCart, setOpenCart] = useState<boolean>(false);
+  const [cartQuantity, setCartQuantity] = useState<number>(0);
 
   // const setLoggedInUser = (user: ILoggedInUser) => {
   //   setUser(user);
   //   setIsLoggedIn(true);
   // };
+
+  useEffect(() => {
+    const totalQuantity = cart.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    setCartQuantity(totalQuantity);
+  }, [cart]);
 
   const handleToggleLoginModal = () => {
     setShowLoginModal(!showLoginModal);
@@ -36,6 +52,10 @@ const Navigation = () => {
     }
   };
 
+  const handleOpenCart = () => {
+    setOpenCart(!openCart);
+  };
+
   //  const [user, setUser] = useState<boolean>(false)
   //  const toggleUser = () => {
   //    setUser(!user);
@@ -44,7 +64,18 @@ const Navigation = () => {
     <nav>
       <ul>
         <li>
-          <NavLink to="/">Hem</NavLink>
+          <NavLink to="/">
+            <IoHomeOutline />
+          </NavLink>
+        </li>
+        <li>
+          {user && (
+            <div className="cart" onClick={handleOpenCart}>
+              <FiShoppingCart />
+              <div className="cart-count">{cartQuantity}</div>
+            </div>
+          )}
+          {user && <Cart openCart={openCart} handleOpenCart={handleOpenCart} />}
         </li>
         <li>
           <button onClick={handleToggleLogin}>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { IProduct, useCart } from "../context/CartContext";
+import "../styles/products.css";
+import { FaCartPlus } from "react-icons/fa";
 
 // interface IProducts {
 //   id: string;
@@ -42,12 +44,12 @@ export const Products = () => {
 
   return (
     <>
-      <h3>Utforska våra produkter</h3>
-      <div>
+      <h2>Utforska våra produkter</h2>
+      <div className="product-container">
         {products?.map((product: IProduct) => (
-          <div key={product.id}>
-            <h4>{product.name}</h4>
-            <p>{product.price} kr</p>
+          <div key={product.id} className="product-item">
+            <h3>{product.name}</h3>
+            <h4 className="price">{product.price} kr</h4>
             <p>{product.description}</p>
             {product.images &&
               product.images.map((image, index) => (
@@ -59,7 +61,7 @@ export const Products = () => {
                 />
               ))}
             <button onClick={() => addToCart(product)}>
-              Lägg till i kundvagn
+              <FaCartPlus />
             </button>
           </div>
         ))}
