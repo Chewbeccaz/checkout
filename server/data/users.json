@@ -14,7 +14,6 @@
     "password": "$2b$10$ZKc83XumSPBNCjvl2DkBwuQS0gUg56Z4nACTW6zr/LFqIdEoT4oKG",
     "stripeId": "cus_PtL2DwNl68nqV2"
   },
-
   {
     "email": "nytest@nytest.com",
     "password": "$2b$10$wYg0DmLALABZO3J8pB.AsuzUfRLecXasPUKczDDbvrr2Xxegabpn6",
@@ -29,5 +28,10 @@
     "email": "hansson@hansson.com",
     "password": "$2b$10$YRt1FJHRIQYq/ICuyYFdZemtscq/EnTeblNqx4wWgEMXt23yLfV8m",
     "stripeId": "cus_PtkqYOnovlUoIl"
+  },
+  {
+    "email": "hejsan@hejsan.com",
+    "password": "$2b$10$tPkjDSLXPO8urkDq/ZYibOYeNnDNsvBPLcZHd1yjhHKP82DK/txRW",
+    "stripeId": "cus_PuHDlAflshmLfU"
   }
 ]
