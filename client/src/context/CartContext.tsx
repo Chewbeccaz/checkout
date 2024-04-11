@@ -25,11 +25,17 @@ interface ICartItem {
 interface ICartContext {
   cart: ICartItem[];
   addToCart: (product: IProduct) => void;
+
+  decreaseQuantity: (product: IProduct) => void;
+  removeFromCart: (product: IProduct) => void; //Alternativt prova (productId: string)
 }
 
 const initialValues = {
   cart: [],
   addToCart: () => {},
+
+  decreaseQuantity: () => {},
+  removeFromCart: () => {},
 };
 
 //Observera att man kanske även vill lägga till decrease from cart eller quantity-funktioner här också.
@@ -62,8 +68,27 @@ const CartProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const decreaseQuantity = (product: IProduct) => {
+    const clonedCart = cart.map((item) => {
+      if (item.product.id === product.id) {
+        return {
+          ...item,
+          quantity: item.quantity > 1 ? item.quantity - 1 : 1,
+        };
+      }
+      return item;
+    });
+    setCart(clonedCart);
+  };
+
+  const removeFromCart = (product: IProduct) => {
+    const clonedCart = cart.filter((item) => item.product.id !== product.id);
+    setCart(clonedCart);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, decreaseQuantity }}>
       {children}
     </CartContext.Provider>
   );

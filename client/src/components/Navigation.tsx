@@ -22,11 +22,6 @@ const Navigation = () => {
   const [openCart, setOpenCart] = useState<boolean>(false);
   const [cartQuantity, setCartQuantity] = useState<number>(0);
 
-  // const setLoggedInUser = (user: ILoggedInUser) => {
-  //   setUser(user);
-  //   setIsLoggedIn(true);
-  // };
-
   useEffect(() => {
     const totalQuantity = cart.reduce(
       (total, item) => total + item.quantity,
@@ -60,10 +55,6 @@ const Navigation = () => {
     setOpenCart(!openCart);
   };
 
-  //  const [user, setUser] = useState<boolean>(false)
-  //  const toggleUser = () => {
-  //    setUser(!user);
-  //  }
   return (
     <nav>
       <ul>
@@ -80,20 +71,6 @@ const Navigation = () => {
           </button>
         </li>
 
-        {/* <li>
-          <button className="icon">
-            {user && (
-              <div className="cart" onClick={handleOpenCart}>
-                <FiShoppingCart />
-                <div className="cart-count">{cartQuantity}</div>
-              </div>
-            )}
-            {user && (
-              <Cart openCart={openCart} handleOpenCart={handleOpenCart} />
-            )}
-          </button>
-        </li> */}
-
         {user && (
           <li>
             <button className="icon" onClick={handleOpenCart}>
@@ -108,11 +85,6 @@ const Navigation = () => {
           </li>
         )}
 
-        {/* <li>
-          <button onClick={handleToggleLogin}>
-            {user ? "Logga ut" : "Logga in"}
-          </button>
-        </li> */}
         <li>
           <button onClick={handleToggleLogin} className="icon">
             {user ? (
@@ -138,14 +110,6 @@ const Navigation = () => {
           </li>
         )}
       </ul>
-
-      {/* <Modal open={showLoginModal} onClose={handleToggleLoginModal}>
-        <Login />
-      </Modal>
-
-      <Modal open={showRegisterModal} onClose={handleToggleRegisterModal}>
-        <Register />
-      </Modal> */}
 
       <Modal open={showLoginModal} onClose={handleToggleLoginModal}>
         <Box

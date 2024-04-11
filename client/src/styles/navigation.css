@@ -18,7 +18,7 @@ li {
 }
 
 .icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 button {
@@ -28,8 +28,8 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* width: 200px; */
-  padding: 10px 20px;
+  /* width: 100%; */
+  padding: 6px 20px;
 }
 
 button p {
@@ -37,8 +37,37 @@ button p {
   font-size: 12px;
 }
 
+.cart {
+  position: relative;
+}
+
+.cart .cart-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 4px;
+  font-size: 10px;
+  width: 8px;
+  height: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .cart svg {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-right: 8px;
   cursor: pointer;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

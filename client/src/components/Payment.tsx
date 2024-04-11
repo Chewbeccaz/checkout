@@ -24,7 +24,18 @@ export const Payment = () => {
 
   return (
     <div>
-      <button onClick={handlePayment}>Gå till betalning</button>
+      <button
+        onClick={handlePayment}
+        style={{
+          backgroundColor: "purple",
+          color: "white",
+          border: "none",
+          padding: "10px 20px",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}>
+        Gå till betalning
+      </button>
     </div>
   );
 };

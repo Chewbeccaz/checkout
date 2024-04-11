@@ -32,6 +32,8 @@ export const Confirmation = () => {
         if (response.ok) {
           setVerified(true);
           setIsLoading(false);
+          localStorage.removeItem("sessionId");
+          localStorage.removeItem("cart");
         }
       };
       verifySession();
