@@ -27,25 +27,12 @@ export const Header = () => {
         <div className="navigation">
           <Navigation />
         </div>
-        <div>
-          <h1>{user ? "INLOGGAD: " + user?.email : "UTLOGGAD"}</h1>
-          {/* <Login />
-        <Logout /> */}
+
+        <div className="header-text">
+          <h2>Låt inte dina bilder ligga på ett dammigt usb-minne</h2>
+          <button>SHOP NOW</button>
         </div>
-        {/* <div>{!user && <Register />}</div> */}
-
-        <h1>
-          Some<span>Webshop</span>
-        </h1>
-        {/* {user && (
-          <div className="cart" onClick={handleOpenCart}>
-            <FiShoppingCart />
-            <div className="cart-count">{cart.length}</div>
-          </div>
-        )} */}
       </div>
-
-      {/* {user && <Cart openCart={openCart} handleOpenCart={handleOpenCart} />} */}
     </>
   );
 };

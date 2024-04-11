@@ -17,6 +17,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  margin-left: 2%;
 }
 
 .cart {
@@ -39,8 +40,16 @@
   align-items: center;
 }
 
-.cart svg {
-  font-size: 36px;
-  margin-right: 8px;
-  cursor: pointer;
+.header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.header-text h2 {
+  font-size: 3.5em;
+  color: white;
 }

@@ -14,11 +14,7 @@
     "password": "$2b$10$ZKc83XumSPBNCjvl2DkBwuQS0gUg56Z4nACTW6zr/LFqIdEoT4oKG",
     "stripeId": "cus_PtL2DwNl68nqV2"
   },
-  {
-    "email": "",
-    "password": "$2b$10$JOvZ1k0MFbGlH9sASu0X6eCLkPIidsuTvSILBHiwYn9KsgYqSqVOW",
-    "stripeId": "cus_PtL4N6kVNurBU0"
-  },
+
   {
     "email": "nytest@nytest.com",
     "password": "$2b$10$wYg0DmLALABZO3J8pB.AsuzUfRLecXasPUKczDDbvrr2Xxegabpn6",

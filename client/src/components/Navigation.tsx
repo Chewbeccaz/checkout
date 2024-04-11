@@ -8,6 +8,10 @@ import "../styles/navigation.css";
 import { IoHomeOutline } from "react-icons/io5";
 import { useCart } from "../context/CartContext";
 import { FiShoppingCart } from "react-icons/fi";
+import { IoPersonAddSharp } from "react-icons/io5";
+import { CiLogin } from "react-icons/ci";
+import { CiLogout } from "react-icons/ci";
+
 import { Cart } from "./Cart";
 
 const Navigation = () => {
@@ -64,27 +68,73 @@ const Navigation = () => {
     <nav>
       <ul>
         <li>
-          <NavLink to="/">
-            <IoHomeOutline />
-          </NavLink>
+          <h4>{user ? "Välkommen " + user?.email : "UTLOGGAD"}</h4>
         </li>
+
         <li>
-          {user && (
-            <div className="cart" onClick={handleOpenCart}>
-              <FiShoppingCart />
-              <div className="cart-count">{cartQuantity}</div>
-            </div>
-          )}
-          {user && <Cart openCart={openCart} handleOpenCart={handleOpenCart} />}
+          <button className="icon">
+            <NavLink to="/">
+              <IoHomeOutline />
+            </NavLink>
+            <p>Hem</p>
+          </button>
         </li>
-        <li>
+
+        {/* <li>
+          <button className="icon">
+            {user && (
+              <div className="cart" onClick={handleOpenCart}>
+                <FiShoppingCart />
+                <div className="cart-count">{cartQuantity}</div>
+              </div>
+            )}
+            {user && (
+              <Cart openCart={openCart} handleOpenCart={handleOpenCart} />
+            )}
+          </button>
+        </li> */}
+
+        {user && (
+          <li>
+            <button className="icon" onClick={handleOpenCart}>
+              <div className="cart">
+                <FiShoppingCart />
+
+                <div className="cart-count">{cartQuantity}</div>
+              </div>
+              <p>Kundkorg</p>
+              <Cart openCart={openCart} handleOpenCart={handleOpenCart} />
+            </button>
+          </li>
+        )}
+
+        {/* <li>
           <button onClick={handleToggleLogin}>
             {user ? "Logga ut" : "Logga in"}
           </button>
+        </li> */}
+        <li>
+          <button onClick={handleToggleLogin} className="icon">
+            {user ? (
+              <>
+                <CiLogout />
+                <p>Logga ut</p>
+              </>
+            ) : (
+              <>
+                <CiLogin />
+                <p>Logga in</p>
+              </>
+            )}
+          </button>
         </li>
+
         {!user && (
           <li>
-            <button onClick={handleToggleRegisterModal}>Registrera</button>
+            <button onClick={handleToggleRegisterModal} className="icon">
+              <IoPersonAddSharp />
+              <p>Registera</p>
+            </button>
           </li>
         )}
       </ul>
