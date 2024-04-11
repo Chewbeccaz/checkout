@@ -17,6 +17,28 @@ li {
   margin-right: 10px;
 }
 
-svg {
-  font-size: 36px;
+.icon {
+  font-size: 2rem;
+}
+
+button {
+  background-color: #f8f9fa;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* width: 200px; */
+  padding: 10px 20px;
+}
+
+button p {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.cart svg {
+  font-size: 2rem;
+  margin-right: 8px;
+  cursor: pointer;
 }

@@ -41,15 +41,16 @@ h2 {
 
 /* Text Styling */
 .product-item h3 {
-  font-size: 34px;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0;
 }
 
 .product-item h4 {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 1rem;
+  font-weight: 200;
   margin-bottom: 5px;
+  margin-top: 0;
 }
 
 .product-item p {
@@ -76,12 +77,16 @@ h2 {
   transition: background-color 0.3s ease;
 }
 
+.product-item svg {
+  font-size: 1.8em;
+}
+
 .product-item button:hover {
   background-color: #c7b7cdcc;
 }
 
 /* Adjust the width for smaller screens if necessary */
-@media (max-width: 768px) {
+@media (max-width: 1085px) {
   .product-item {
     width: calc(50% - 20px);
   }
