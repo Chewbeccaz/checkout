@@ -34,8 +34,6 @@ export const useUser = () => useContext(UserContext);
 export const UserProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<ILoggedInUser | undefined>(undefined);
 
-  console.log(user);
-
   //*********************************************REGISTER****************************************************
   const register = async (email: string, password: string) => {
     try {
@@ -50,7 +48,6 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
         }),
       });
       const data = await response.json();
-      console.log(data);
 
       if (response.ok) {
         setUser(data);
@@ -81,12 +78,9 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setUser(data);
-        console.log("Du är inloggad(context)");
         window.location.href = "/";
       } else {
-        console.log("Inloggning misslyckades(context)");
         setUser(undefined);
       }
     } catch (error) {
@@ -105,7 +99,6 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
 
       if (response.ok) {
         setUser(undefined);
-        console.log("Du är utloggad(context)");
       } else {
         console.log("Utloggning misslyckades(context)");
       }
@@ -122,7 +115,6 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log("SÄTTER DU MIN USER TILL UNDEFINED?????", data);
 
         setUser(data);
       } else {

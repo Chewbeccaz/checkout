@@ -40,7 +40,6 @@ const Navigation = () => {
 
   const handleLogout = async () => {
     await logout();
-    console.log("Funkade det att logga ut?");
   };
 
   const handleToggleLogin = () => {

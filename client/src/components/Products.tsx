@@ -16,7 +16,6 @@ export const Products = () => {
     try {
       const response = await fetch("http://localhost:3001/products");
       const fetchedData = await response.json();
-      console.log(fetchedData);
 
       const productList: IProduct[] = fetchedData.data.map(
         (product: IProduct) => ({

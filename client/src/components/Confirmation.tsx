@@ -38,6 +38,8 @@ export const Confirmation = () => {
     }
   }, [verified]);
 
+  //Lägg till en hemknapp - + ev skicka tillbaka ordernummer.
+
   return (
     <div>
       <h1>{verified && !isloading ? "Tack för ditt köp! 💸" : "LOADING..."}</h1>

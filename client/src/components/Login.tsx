@@ -9,7 +9,6 @@ export const Login = () => {
   const handleLogin = async () => {
     try {
       await login(email, password);
-      console.log("Funkade det att logga in?");
     } catch (error) {
       console.error("An error occurred", error);
     }
