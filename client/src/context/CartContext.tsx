@@ -25,20 +25,16 @@ interface ICartItem {
 interface ICartContext {
   cart: ICartItem[];
   addToCart: (product: IProduct) => void;
-
   decreaseQuantity: (product: IProduct) => void;
-  removeFromCart: (product: IProduct) => void; //Alternativt prova (productId: string)
+  removeFromCart: (product: IProduct) => void;
 }
 
 const initialValues = {
   cart: [],
   addToCart: () => {},
-
   decreaseQuantity: () => {},
   removeFromCart: () => {},
 };
-
-//Observera att man kanske även vill lägga till decrease from cart eller quantity-funktioner här också.
 
 const CartContext = createContext<ICartContext>(initialValues);
 export const useCart = () => useContext(CartContext);

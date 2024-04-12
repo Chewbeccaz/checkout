@@ -4,10 +4,8 @@ const fs = require("fs").promises;
 const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
-  //Innehåller användarens data, mail och lösenord.
   const { email, password } = req.body;
 
-  //Kolla så användare inte redan finns
   const users = await fetchUsers();
   const userAlreadyExists = users.find((u) => u.email === email);
 
@@ -15,18 +13,12 @@ const register = async (req, res) => {
     return res.status(400).json("User already exists");
   }
 
-  //skapa kund i stripe.
-  //när man får tillbaa en kund från stripe spara id - den används för att koppla och beteala. etc.
-
   const stripe = initStripe();
-  //lite validering på detta, kolla om kund finns
 
-  //
   const customer = await stripe.customers.create({
     email,
   });
 
-  //Kryptera lösenord
   const hashedPassword = await bcrypt.hash(password, 10);
 
   //Spara till databasen
@@ -38,36 +30,25 @@ const register = async (req, res) => {
   users.push(newUser);
   await fs.writeFile("./data/users.json", JSON.stringify(users, null, 2));
 
-  //Skicka tillbaka ett svar
   res.status(201).json(newUser.email);
 };
 
 const login = async (req, res) => {
-  //Kolla så användaren finns (mest troligt validering med joi också sen)
   const { email, password } = req.body;
 
   const users = await fetchUsers();
   const userExists = users.find((u) => u.email === email);
 
-  console.log("User exists:", userExists);
-
   //Kolla så lösenordet stämmer
-
   if (!userExists || !(await bcrypt.compare(password, userExists.password))) {
     return res.status(400).json("Wrong user or password");
   }
-
-  //Logga in anvädaren, starta en session
-  //hämta ut id:t från stripe via detta när betalning ska ske.
   req.session.user = userExists;
-  console.log("Session:", req.session.user);
-
-  //Skicka tillbaka ett svar
   res.status(200).json(userExists);
 };
 
 const logout = (req, res) => {
-  req.session = null; //Rensa och döda sessionen.
+  req.session = null;
   res.status(200).json("Logged out");
 };
 
@@ -75,7 +56,6 @@ const authorize = (req, res) => {
   if (!req.session.user) {
     return res.status(401).json("You are not logged in");
   }
-  //Denna man ska kunna knyta till isAuthenticated.
   res.status(200).json(req.session.user.email);
 };
 

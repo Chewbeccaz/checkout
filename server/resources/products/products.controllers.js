@@ -13,7 +13,6 @@ const getProducts = async (req, res) => {
     console.error("error", error);
     res.status(500).json(error);
   }
-  //   getProducts();
 };
 
 module.exports = { getProducts };

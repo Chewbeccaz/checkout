@@ -24,14 +24,12 @@ h2 {
   margin: 10px;
   width: calc(25% - 30px);
   box-sizing: border-box;
-  /* width: 300px; */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-/* Product Image Styling */
 .product-item img {
   width: 100%;
   height: auto;
@@ -39,7 +37,6 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* Text Styling */
 .product-item h3 {
   font-size: 1.5rem;
   font-weight: bold;
@@ -65,7 +62,6 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* Button Styling */
 .product-item button {
   background-color: #c7b7cd;
   color: #fff;
@@ -85,7 +81,6 @@ h2 {
   background-color: #c7b7cdcc;
 }
 
-/* Adjust the width for smaller screens if necessary */
 @media (max-width: 1085px) {
   .product-item {
     width: calc(50% - 20px);

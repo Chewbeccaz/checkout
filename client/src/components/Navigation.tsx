@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { Box, Modal, Typography } from "@mui/material";
@@ -40,7 +40,6 @@ const Navigation = () => {
 
   const handleLogout = async () => {
     await logout();
-    console.log("Funkade det att logga ut?");
   };
 
   const handleToggleLogin = () => {
@@ -59,7 +58,7 @@ const Navigation = () => {
     <nav>
       <ul>
         <li>
-          <h4>{user ? "Välkommen " + user : "UTLOGGAD"}</h4>
+          <h4>{user ? "Välkommen " + user : "LOG IN TO SHOP"}</h4>
         </li>
 
         <li>

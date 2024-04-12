@@ -5,7 +5,6 @@ export const Payment = () => {
   console.log(cart);
 
   const handlePayment = async () => {
-    console.log("cart 2:", cart);
     const response = await fetch(
       "http://localhost:3001/payments/create-checkout-session",
       {

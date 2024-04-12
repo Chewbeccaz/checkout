@@ -4,8 +4,6 @@ export const Confirmation = () => {
   const [verified, setVerified] = useState(false);
   const [isloading, setIsLoading] = useState(true);
 
-  //Fixa detta snyggare, det är inte optimalt som det ser ut nu.
-
   useEffect(() => {
     if (!verified) {
       const verifySession = async () => {
@@ -39,6 +37,8 @@ export const Confirmation = () => {
       verifySession();
     }
   }, [verified]);
+
+  //Lägg till en hemknapp - + ev skicka tillbaka ordernummer.
 
   return (
     <div>
