@@ -78,12 +78,14 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
           password,
         }),
       });
-      const data = await response.json();
+      // const data = await response.json();
 
       if (response.ok) {
+        const data = await response.json();
+        console.log(data);
         setUser(data);
         console.log("Du är inloggad(context)");
-        window.location.href = "/";
+        // window.location.href = "/"; //Lägg till sen när jag inte har bug.
       } else {
         console.log("Inloggning misslyckades(context)");
         setUser(undefined);
