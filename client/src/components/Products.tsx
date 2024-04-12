@@ -2,11 +2,16 @@ import { useEffect, useState } from "react";
 import { IProduct, useCart } from "../context/CartContext";
 import "../styles/products.css";
 import { FaCartPlus } from "react-icons/fa";
+import { useUser } from "../context/UserContext";
 
 export const Products = () => {
   const [products, setProducts] = useState<IProduct[]>();
+  const [showMessage, setShowMessage] = useState<{ [key: string]: boolean }>(
+    {}
+  );
 
   const { addToCart } = useCart();
+  const { user } = useUser();
 
   useEffect(() => {
     fetchProducts();
@@ -30,6 +35,31 @@ export const Products = () => {
     }
   };
 
+  const handleAddToCart = (product: IProduct) => {
+    if (user) {
+      addToCart(product);
+      setShowMessage((prevState) => ({ ...prevState, [product.id]: true }));
+      setTimeout(
+        () =>
+          setShowMessage((prevState) => ({
+            ...prevState,
+            [product.id]: false,
+          })),
+        3000
+      );
+    } else {
+      setShowMessage((prevState) => ({ ...prevState, [product.id]: true }));
+      setTimeout(
+        () =>
+          setShowMessage((prevState) => ({
+            ...prevState,
+            [product.id]: false,
+          })),
+        3000
+      );
+    }
+  };
+
   return (
     <>
       <h2>Utforska våra produkter</h2>
@@ -48,9 +78,14 @@ export const Products = () => {
                   style={{ width: "200px" }}
                 />
               ))}
-            <button onClick={() => addToCart(product)}>
+            <button onClick={() => handleAddToCart(product)}>
               <FaCartPlus />
             </button>
+            {showMessage[product.id] && (
+              <p>
+                {user ? "Good Choice! Added to cart.." : "SIGN IN TO SHOP."}{" "}
+              </p>
+            )}
           </div>
         ))}
       </div>
