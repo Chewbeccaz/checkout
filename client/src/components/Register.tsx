@@ -7,34 +7,6 @@ export const Register = () => {
   const [registrationMsg, setRegistrationMsg] = useState("");
   const { register } = useUser();
 
-  // const registerNewUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await fetch("http://localhost:3001/api/auth/register", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         email: email,
-  //         password: password,
-  //       }),
-  //     });
-
-  //     const data = await response.json();
-  //     console.log(data);
-
-  //     if (response.ok) {
-  //       setRegistrationMsg("Din användare är skapad");
-  //       //Kanske redirecta till login
-  //     } else {
-  //       setRegistrationMsg("Användare redan registrerad");
-  //     }
-  //   } catch (error) {
-  //     console.error("An error occured", error);
-  //   }
-  // };
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === "email") {
       setEmail(e.target.value);

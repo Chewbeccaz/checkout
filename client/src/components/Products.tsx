@@ -3,21 +3,10 @@ import { IProduct, useCart } from "../context/CartContext";
 import "../styles/products.css";
 import { FaCartPlus } from "react-icons/fa";
 
-// interface IProducts {
-//   id: string;
-//   name: string;
-//   description: string;
-//   images: string[];
-//   price: number;
-//   default_price: {
-//     unit_amount: number;
-//   };
-// }
-
 export const Products = () => {
   const [products, setProducts] = useState<IProduct[]>();
 
-  const { addToCart } = useCart(); //hooken  från context
+  const { addToCart } = useCart();
 
   useEffect(() => {
     fetchProducts();
@@ -27,12 +16,12 @@ export const Products = () => {
     try {
       const response = await fetch("http://localhost:3001/products");
       const fetchedData = await response.json();
-      console.log(fetchedData); // vilket data får vi tillbaka?
+      console.log(fetchedData);
 
       const productList: IProduct[] = fetchedData.data.map(
         (product: IProduct) => ({
           ...product,
-          price: product.default_price.unit_amount / 100, // Stripe använder cent som standardenhet, så vi delar med 100 för att få priset i SEK
+          price: product.default_price.unit_amount / 100,
         })
       );
 

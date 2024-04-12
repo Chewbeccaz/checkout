@@ -13,8 +13,7 @@ export interface ILoggedInUser {
 export interface IUserContext {
   user: ILoggedInUser | undefined;
   setUser: (user: ILoggedInUser | undefined) => void;
-  // setUser: (user: ILoggedInUser) => void;
-  register: (email: string, password: string) => Promise<void>; //Behövs promise?
+  register: (email: string, password: string) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   authorize: () => Promise<void>;
@@ -36,12 +35,6 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<ILoggedInUser | undefined>(undefined);
 
   console.log(user);
-  // const loadUserFromLocalStorage = () => {
-  //   const storedUser = localStorage.getItem("user");
-  //   if (storedUser) {
-  //     setUser(JSON.parse(storedUser));
-  //   }
-  // };
 
   //*********************************************REGISTER****************************************************
   const register = async (email: string, password: string) => {
@@ -85,17 +78,13 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
           password,
         }),
       });
-      // const data = await response.json();
 
       if (response.ok) {
         const data = await response.json();
         console.log(data);
         setUser(data);
         console.log("Du är inloggad(context)");
-        // window.location.href = "/"; //Lägg till sen när jag inte har bug.
-
-        //Lägger till localstorage för user.
-        localStorage.setItem("user", JSON.stringify(data));
+        window.location.href = "/";
       } else {
         console.log("Inloggning misslyckades(context)");
         setUser(undefined);
@@ -117,7 +106,6 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
       if (response.ok) {
         setUser(undefined);
         console.log("Du är utloggad(context)");
-        localStorage.removeItem("user"); //Ta bort localstorage.
       } else {
         console.log("Utloggning misslyckades(context)");
       }
@@ -138,7 +126,6 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
 
         setUser(data);
       } else {
-        // console.log("SÄTTER DU MIN USER TILL UNDEFINED?????");
         setUser(undefined);
       }
     } catch (error) {
@@ -147,7 +134,6 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    // loadUserFromLocalStorage();
     authorize();
   }, []);
 
