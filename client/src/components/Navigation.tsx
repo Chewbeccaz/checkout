@@ -59,7 +59,7 @@ const Navigation = () => {
     <nav>
       <ul>
         <li>
-          <h4>{user ? "Välkommen " + user.email : "UTLOGGAD"}</h4>
+          <h4>{user ? "Välkommen " + user : "UTLOGGAD"}</h4>
         </li>
 
         <li>
