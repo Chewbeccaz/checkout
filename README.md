@@ -35,7 +35,6 @@ Users can register, log in, and make purchases of products managed through Strip
 
 plaintext
 STRIPE_KEY={YOUR_KEY}
-STRIPE_PUBLIC_KEY={YOUR KEY}
 
 #### Building and Running the Project
 
