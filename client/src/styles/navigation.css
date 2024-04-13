@@ -22,7 +22,7 @@ li {
 }
 
 button {
-  background-color: #f8f9fa;
+  background-color: #f8f9fad3;
   border: none;
   cursor: pointer;
   display: flex;
@@ -30,6 +30,10 @@ button {
   align-items: center;
   /* width: 100%; */
   padding: 6px 20px;
+}
+
+button:hover {
+  background-color: #f8f9faac;
 }
 
 button p {

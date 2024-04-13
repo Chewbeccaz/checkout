@@ -53,10 +53,13 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
         setUser(data);
         console.log("Din användare är skapad");
       } else {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
         console.log("Användare redan registrerad");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("An error with register occured", error);
+      throw new Error();
     }
   };
 
@@ -81,10 +84,12 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
         setUser(data);
         window.location.href = "/";
       } else {
-        setUser(undefined);
+        throw new Error("Wrong user or password");
+        // setUser(undefined); //tabort?
       }
     } catch (error) {
       console.error("An error with login occured", error);
+      throw error;
     }
   };
 

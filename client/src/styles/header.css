@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+
 .header {
   display: flex;
   align-items: center;
@@ -23,9 +25,26 @@
   justify-content: center;
   margin: 0 auto;
   width: 60%;
+  font-family: "Abril Fatface", cursive;
 }
 
 .header-text h2 {
   font-size: 3.5em;
   color: white;
+}
+
+.shop-now {
+  background-color: #f8f9fad3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  padding: 6px 20px;
+}
+
+.shop-now:hover {
+  background-color: #f8f9fa7b;
 }

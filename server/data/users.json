@@ -1,17 +1,12 @@
 [
   {
-    "email": "rebecca@gmail.com",
-    "password": "$2b$10$jUIscNRFE9wX.Hmg.p6N1uw0n5tIp5CGVLJ8p0fOJer0Ofhy9PExK",
-    "stripeId": "cus_PruqNBRaUCCWqk"
-  },
-  {
     "email": "test@test.com",
     "password": "$2b$10$Ad/YkKq1pOk5H04AOIVhr.IdKBLk927cQ3bhZ0ZWR6ZIVNsq/U8k.",
     "stripeId": "cus_Pt3LdBWvFIeD7j"
   },
   {
-    "email": "hej@hej.se",
-    "password": "$2b$10$k1eHkP39E9QZnoIi1nN6ZuA5q8QJlxw8YQIRHkc0FKGL3eCgWh.Au",
-    "stripeId": "cus_PuYBqLQy7F2VYJ"
+    "email": "nytest@nytest.se",
+    "password": "$2b$10$KXYixpXWMEafuwloV1tAO.zi/wnx/gXHCK7qgDSAwtarCrCxtZE62",
+    "stripeId": "cus_PuvLVgOTnCSDKC"
   }
 ]

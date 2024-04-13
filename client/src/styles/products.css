@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
 body {
   background-color: #f8f8f8;
 }
@@ -6,6 +7,7 @@ h2 {
   text-align: center;
   font-size: 2.5em;
   color: #c7b7cd;
+  font-family: "Abril Fatface", cursive;
 }
 
 .product-container {

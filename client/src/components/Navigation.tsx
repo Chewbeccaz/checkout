@@ -11,8 +11,8 @@ import { FiShoppingCart } from "react-icons/fi";
 import { IoPersonAddSharp } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
-
 import { Cart } from "./Cart";
+import { IoMdClose } from "react-icons/io";
 
 const Navigation = () => {
   const { user, logout } = useUser();
@@ -125,6 +125,15 @@ const Navigation = () => {
           <Typography variant="h5" gutterBottom>
             Logga in
           </Typography>
+          <IoMdClose
+            style={{
+              position: "absolute",
+              top: 8,
+              right: 8,
+              cursor: "pointer",
+            }}
+            onClick={handleToggleLoginModal}
+          />
           <Login />
         </Box>
       </Modal>
@@ -144,6 +153,15 @@ const Navigation = () => {
           <Typography variant="h5" gutterBottom>
             Registrera
           </Typography>
+          <IoMdClose
+            style={{
+              position: "absolute",
+              top: 8,
+              right: 8,
+              cursor: "pointer",
+            }}
+            onClick={handleToggleRegisterModal}
+          />
           <Register />
         </Box>
       </Modal>

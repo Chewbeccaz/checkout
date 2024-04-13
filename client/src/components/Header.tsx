@@ -21,7 +21,9 @@ export const Header = () => {
 
         <div className="header-text">
           <h2>Låt inte dina bilder ligga på ett dammigt usb-minne</h2>
-          <button onClick={scrollToProduct}>SHOP NOW</button>
+          <button onClick={scrollToProduct} className="shop-now">
+            SHOP NOW
+          </button>
         </div>
       </div>
     </>
