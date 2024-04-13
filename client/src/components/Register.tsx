@@ -1,10 +1,12 @@
 import { ChangeEvent, useState } from "react";
 import { useUser } from "../context/UserContext";
+import "../styles/register.css";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registrationMsg, setRegistrationMsg] = useState("");
+  const [error, setError] = useState("");
   const { register } = useUser();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -15,21 +17,23 @@ export const Register = () => {
     }
   };
 
-  const registerNewUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const registerNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await register(email, password);
       setRegistrationMsg("Din användare är skapad");
-    } catch (error) {
+      setError("");
+    } catch (error: any) {
       console.error("An error occurred", error);
       setRegistrationMsg("Användare redan registrerad");
+      setError(error.message);
     }
   };
 
   return (
     <div>
       <h1>Register</h1>
-      <form className="register-wrapper">
+      <form className="register-wrapper" onSubmit={registerNewUser}>
         <input
           type="text"
           name="email"
@@ -45,11 +49,12 @@ export const Register = () => {
           value={password}
           placeholder="Lösenord"
         />
-        <button onClick={registerNewUser} className="register">
+        <button type="submit" className="register">
           Registrera
         </button>
       </form>
       {registrationMsg && <p>{registrationMsg}</p>}
+      {error && <p>{error}</p>}
     </div>
   );
 };
