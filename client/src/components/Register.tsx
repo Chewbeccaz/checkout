@@ -5,7 +5,6 @@ import "../styles/register.css";
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [registrationMsg, setRegistrationMsg] = useState("");
   const [error, setError] = useState("");
   const { register } = useUser();
 
@@ -21,11 +20,9 @@ export const Register = () => {
     e.preventDefault();
     try {
       await register(email, password);
-      setRegistrationMsg("Din användare är skapad");
-      setError("");
+      setError("Din användare är skapad.");
     } catch (error: any) {
       console.error("An error occurred", error);
-      setRegistrationMsg("Användare redan registrerad");
       setError(error.message);
     }
   };
@@ -39,7 +36,7 @@ export const Register = () => {
           name="email"
           onChange={handleInputChange}
           value={email}
-          placeholder="Skriv in mail eller användarnamn.."
+          placeholder="Mailadress"
         />
 
         <input
@@ -53,7 +50,6 @@ export const Register = () => {
           Registrera
         </button>
       </form>
-      {registrationMsg && <p>{registrationMsg}</p>}
       {error && <p>{error}</p>}
     </div>
   );

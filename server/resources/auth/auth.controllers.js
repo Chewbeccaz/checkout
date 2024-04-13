@@ -3,8 +3,17 @@ const fetchUsers = require("../../utils/fetchUsers");
 const fs = require("fs").promises;
 const bcrypt = require("bcrypt");
 
+const isValidEmail = (email) => {
+  const regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+  return regex.test(email);
+};
+
 const register = async (req, res) => {
   const { email, password } = req.body;
+
+  if (!isValidEmail(email)) {
+    return res.status(400).json("Invalid email address");
+  }
 
   const users = await fetchUsers();
   const userAlreadyExists = users.find((u) => u.email === email);
@@ -15,23 +24,30 @@ const register = async (req, res) => {
 
   const stripe = initStripe();
 
-  const customer = await stripe.customers.create({
-    email,
-  });
+  try {
+    const customer = await stripe.customers.create({
+      email,
+    });
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-  //Spara till databasen
-  const newUser = {
-    email,
-    password: hashedPassword,
-    stripeId: customer.id,
-  };
-  users.push(newUser);
-  await fs.writeFile("./data/users.json", JSON.stringify(users, null, 2));
+    //Spara till databasen
+    const newUser = {
+      email,
+      password: hashedPassword,
+      stripeId: customer.id,
+    };
+    users.push(newUser);
+    await fs.writeFile("./data/users.json", JSON.stringify(users, null, 2));
 
-  res.status(201).json(newUser.email);
+    res.status(201).json(newUser.email);
+  } catch (error) {
+    console.error("Error creating customer in Stripe:", error);
+    res.status(500).json("Error processing your request");
+  }
 };
+
+//********************************************************** */
 
 const login = async (req, res) => {
   const { email, password } = req.body;

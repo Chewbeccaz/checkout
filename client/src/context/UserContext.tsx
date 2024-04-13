@@ -47,21 +47,38 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
           password: password,
         }),
       });
-      const data = await response.json();
 
-      if (response.ok) {
-        setUser(data);
-        console.log("Din användare är skapad");
-      } else {
+      if (!response.ok) {
+        // If the response status is not OK (e.g., 400, 401), throw an error with the status text
         const errorMessage = await response.text();
         throw new Error(errorMessage);
-        console.log("Användare redan registrerad");
       }
+
+      const data = await response.json();
+      setUser(data);
+      console.log("Din användare är skapad");
     } catch (error: any) {
-      console.error("An error with register occured", error);
-      throw new Error();
+      console.error("An error with register occurred", error);
+      // Handle the error appropriately, e.g., by setting an error message in your state
+      throw new Error(error.message);
     }
   };
+
+  //     const data = await response.json();
+
+  //     if (response.ok) {
+  //       setUser(data);
+  //       console.log("Din användare är skapad");
+  //     } else {
+  //       const errorMessage = await response.text();
+  //       throw new Error(errorMessage);
+  //       console.log("Användare redan registrerad");
+  //     }
+  //   } catch (error: any) {
+  //     console.error("An error with register occured", error);
+  //     throw new Error();
+  //   }
+  // };
 
   //*********************************************LOGIN****************************************************
 
